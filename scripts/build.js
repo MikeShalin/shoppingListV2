@@ -37,6 +37,17 @@ const useYarn = fs.existsSync(paths.yarnLockFile);
 const WARN_AFTER_BUNDLE_GZIP_SIZE = 512 * 1024;
 const WARN_AFTER_CHUNK_GZIP_SIZE = 1024 * 1024;
 
+config.resolve = {
+  alias: {
+    Root: path.resolve('src'),
+    Models: path.resolve('src/models'),
+    Utils: path.resolve('src/utils'),
+    Core: path.resolve('src/core'),
+    Features: path.resolve('src/features'),
+    Config: path.resolve('src/config'),
+  }
+}
+
 const isInteractive = process.stdout.isTTY;
 
 // Warn and crash if required files are missing

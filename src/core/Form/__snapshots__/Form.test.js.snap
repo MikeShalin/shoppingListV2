@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form component equal early snapshots with terms and conditions 1`] = `
+<Form
+  as="form"
+>
+  <FormField>
+    <FormInput
+      as={[Function]}
+      control={[Function]}
+      label="First Name"
+      placeholder="First Name"
+      type="email"
+    />
+  </FormField>
+  <FormField>
+    <FormInput
+      as={[Function]}
+      control={[Function]}
+      label="Enter Password"
+      placeholder="Enter Password"
+      type="password"
+    />
+  </FormField>
+  <FormField>
+    <Checkbox
+      label="I agree to the Terms and Conditions"
+      type="checkbox"
+    />
+  </FormField>
+  <Button
+    as="button"
+    type="submit"
+  >
+    Submit
+  </Button>
+</Form>
+`;
+
+exports[`Form component equal early snapshots without terms and conditions 1`] = `
+<Form
+  as="form"
+>
+  <FormField>
+    <FormInput
+      as={[Function]}
+      control={[Function]}
+      label="First Name"
+      placeholder="First Name"
+      type="email"
+    />
+  </FormField>
+  <FormField>
+    <FormInput
+      as={[Function]}
+      control={[Function]}
+      label="Enter Password"
+      placeholder="Enter Password"
+      type="password"
+    />
+  </FormField>
+  <FormField />
+  <Button
+    as="button"
+    type="submit"
+  >
+    Submit
+  </Button>
+</Form>
+`;

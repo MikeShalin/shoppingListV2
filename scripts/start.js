@@ -15,6 +15,7 @@ process.on('unhandledRejection', err => {
 require('../config/env');
 
 
+const path = require('path');
 const fs = require('fs');
 const chalk = require('chalk');
 const webpack = require('webpack');
@@ -43,6 +44,17 @@ if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
 // Tools like Cloud9 rely on this.
 const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 3000;
 const HOST = process.env.HOST || '0.0.0.0';
+
+config.resolve = {
+  alias: {
+    Root: path.resolve('src'),
+    Models: path.resolve('src/models'),
+    Utils: path.resolve('src/utils'),
+    Core: path.resolve('src/core'),
+    Features: path.resolve('src/features'),
+    Config: path.resolve('src/config'),
+  }
+}
 
 if (process.env.HOST) {
   console.log(
