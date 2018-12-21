@@ -1,0 +1,1 @@
+export const getIcons = (name) => `https://api.adorable.io/avatars/285/${name}.png`
