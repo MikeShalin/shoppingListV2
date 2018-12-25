@@ -5,11 +5,36 @@ import {
   Form,
   Button,
 } from 'semantic-ui-react'
+import {
+  compose,
+  lifecycle,
+  withHandlers,
+  type HOC,
+} from 'recompose'
+import { inject, observer } from 'mobx-react'
 
-const FormExampleForm = () => (
-  <Form>
+type TProps = {
+  handleChange: (value: SyntheticKeyboardEvent<KeyboardEvent>) => boolean,
+  productForm: {
+    onSubmit: () => boolean,
+    productName: string,
+  }
+}
+
+const FormExampleForm = ({
+                           handleChange,
+                           productForm: {
+                             onSubmit,
+                             productName,
+                           },
+                         }: TProps) => (
+  <Form onSubmit={onSubmit}>
     <Form.Field>
-      <Input placeholder='Enter product...'/>
+      <Input
+        placeholder='Enter product...'
+        onChange={handleChange}
+        value={productName}
+      />
     </Form.Field>
     <Form.Field>
       <Button color='blue' type='submit'>Submit</Button>
@@ -17,4 +42,15 @@ const FormExampleForm = () => (
   </Form>
 )
 
-export default FormExampleForm
+const composed: HOC<*, {}> = compose(
+  inject('productForm'),
+  withHandlers({
+    handleChange: ({ productForm: { onChange } }) => (e) => {
+      onChange(e.target.value)
+      return false
+    },
+  }),
+  observer,
+)
+
+export default composed(FormExampleForm)

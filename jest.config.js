@@ -34,14 +34,10 @@ module.exports = {
   "moduleNameMapper": {
     "^react-native$": "react-native-web",
     "^Root(.*)$": "<rootDir>/src$1",
-    "^Basket(.*)$": "<rootDir>/src/basketball$1",
-    "^Football(.*)$": "<rootDir>/src/football$1",
-    "^Lib(.*)$": "<rootDir>/src/lib2$1",
-    "^OldLib(.*)$": "<rootDir>/src/lib$1",
     "^Public(.*)$": "<rootDir>/public/images$1",
-    "^Module(.*)$": "<rootDir>/src/module$1",
-    "^Models(.*)$": "<rootDir>/src/basketball/models$1",
+    "^Models(.*)$": "<rootDir>/src/models$1",
     "^Features(.*)$": "<rootDir>/src/features$1",
     "^Fixtures(.*)$": "<rootDir>/src/fixtures$1",
+    "^Core(.*)$": "<rootDir>/src/core$1",
   }
 };
