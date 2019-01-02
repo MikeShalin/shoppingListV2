@@ -1,5 +1,13 @@
+/** @flow **/
 import React from 'react'
 import { List } from 'semantic-ui-react'
+import {
+  compose,
+  lifecycle,
+  type HOC,
+} from 'recompose'
+import { inject, observer } from 'mobx-react'
+
 import Product from 'Features/Product'
 
 const ListExampleDivided = () => (
@@ -16,4 +24,14 @@ const ListExampleDivided = () => (
   </List>
 )
 
-export default ListExampleDivided
+const composed: HOC<*, {}> = compose(
+  inject('productList'),
+  observer,
+  lifecycle({
+    componentDidMount(){
+      console.log(JSON.parse(this.props.productList.getList()))
+    }
+  })
+)
+
+export default composed(ListExampleDivided)

@@ -1,5 +1,6 @@
 import { types } from 'mobx-state-tree'
 import { getItem, setItem } from 'Utils/localStorage'
+import { key } from 'Config'
 
 const ProductForm = types
   .model('Store', {
@@ -10,17 +11,14 @@ const ProductForm = types
       self.productName = target
     },
     onSubmit() {
-      const key = 'productList'
       const productList = getItem(key)
       const value = productList
-        ? JSON.stringify([...JSON.parse(productList), self.productName])
-        : JSON.stringify(self.productName)
-      setItem({value, key})
+        ? [...JSON.parse(productList), self.productName]
+        : [self.productName]
+      setItem({value: JSON.stringify(value), key})
       self.onChange('')
-      return false
+      return true
     },
   }))
 
-export default ProductForm.create({
-  productName: '',
-})
+export default ProductForm
