@@ -1,34 +1,37 @@
 import { types } from 'mobx-state-tree'
+import _ from 'lodash'
+
 import { getItem, setItem } from 'Utils/localStorage'
 import { key } from 'Config'
 
-const ExecutionDataItem = types.model({
+const Product = {
   id: types.number,
-  start_time: types.string,
-  finish_time: types.string,
-  program_version: types.number,
-})
+  name: types.string,
+  icon: types.string,
+  date: types.string,
+}
 
 const ProductList = types
   .model('Store', {
-    list: types.optional(types.array(ExecutionDataItem), []),
+    list: types.frozen(Product),
     error: types.union(types.string, types.null),
   })
   .actions(self => ({
-    getList(){
-      const lol = getItem(key)
-      return lol
+    removeProductOfList(id) {
+      const list = JSON.parse(getItem(key))
+      self.list = _.omit(list, id)
+      setItem({ key, value: JSON.stringify(self.list) })
+      return true
     },
-    handlerSubmit() {
-      console.log('it submit ', self.productName)
-      // self.productName = location
+    addToProductList(product) {
+      const value = {...JSON.parse(getItem(key)), ...product}
+      setItem({ value: JSON.stringify(value), key })
+      self.list = value
+      return true
     },
     handleChange(target) {
       self.productName = target
     },
   }))
 
-export default ProductList.create({
-  list: [],
-  error: null,
-})
+export default ProductList

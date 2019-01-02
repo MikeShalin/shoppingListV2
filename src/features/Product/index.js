@@ -5,30 +5,63 @@ import {
   Image,
   Button,
 } from 'semantic-ui-react'
+import {
+  compose,
+  withHandlers,
+  type HOC,
+} from 'recompose'
+import { inject, observer } from 'mobx-react/index'
+import m from 'moment'
 
-import { getIcons } from 'Utils/helpers'
+import { getIcons, getHumanizedTime } from 'Utils/helpers'
 
 type TProps = {
-  name: string,
+  icon: string,
   children: any,
   date: string,
+  getUpdatedTime: () => string,
+  productList: (value: number) => boolean,
+  id: number,
 }
 
+
 const ListExampleDivided = ({
-                              name,
+                              icon,
                               children,
                               date,
+                              id,
+                              productList: {
+                                removeProductOfList,
+                              },
+                              getUpdatedTime,
                             }: TProps) => (
   <List.Item>
-    <Image avatar src={getIcons(name)}/>
+    <Image avatar src={getIcons(icon)}/>
     <List.Content>
       <List.Header as='a'>{children}</List.Header>
-      <List.Description as='a'>Updated {date} ago</List.Description>
+      <List.Description as='a'>Updated {getUpdatedTime()}</List.Description>
     </List.Content>
     <List.Content floated='right'>
-      <Button negative>✖</Button>
+      <Button negative onClick={() => removeProductOfList(id)}>✖</Button>
     </List.Content>
   </List.Item>
 )
 
-export default ListExampleDivided
+const composed: HOC<*, {}> = compose(
+  inject('productList'),
+  withHandlers({
+    getUpdatedTime: ({ date }) => () => {
+      const parse = 'seconds'
+      const a = m(date)
+      const b = m(new Date())
+      return getHumanizedTime({
+        parse,
+        date: a.diff(b, parse),
+        isHumanize: true,
+      })
+    },
+  }),
+  observer,
+)
+
+export default composed(ListExampleDivided)
