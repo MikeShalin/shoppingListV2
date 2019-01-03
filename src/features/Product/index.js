@@ -13,7 +13,11 @@ import {
 import { inject, observer } from 'mobx-react/index'
 import m from 'moment'
 
-import { getIcons, getHumanizedTime } from 'Utils/helpers'
+import {
+  getIcons,
+  getHumanizedTime,
+  onPlayerImageError,
+} from 'Utils/helpers'
 
 type TProps = {
   icon: string,
@@ -36,7 +40,7 @@ const ListExampleDivided = ({
                               getUpdatedTime,
                             }: TProps) => (
   <List.Item>
-    <Image avatar src={getIcons(icon)}/>
+    <Image avatar src={getIcons(icon)} onError={onPlayerImageError}/>
     <List.Content>
       <List.Header as='a'>{children}</List.Header>
       <List.Description as='a'>Updated {getUpdatedTime()}</List.Description>

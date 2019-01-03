@@ -11,3 +11,10 @@ type TGetHumanizedTime = {
 export const getHumanizedTime = ({ date, parse, isHumanize }: TGetHumanizedTime) => (
   m.duration(date, parse).humanize(isHumanize)
 )
+
+export const onPlayerImageError = (e: *) => {
+  e.currentTarget.src = '/images/no-photo.png'
+  e.currentTarget.onError = ''
+  return true
+}
+

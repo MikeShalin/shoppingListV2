@@ -24,7 +24,7 @@ const ProductList = types
       return true
     },
     addToProductList(product) {
-      const value = {...JSON.parse(getItem(key)), ...product}
+      const value = { ...JSON.parse(getItem(key)), ...product }
       setItem({ value: JSON.stringify(value), key })
       self.list = value
       return true
