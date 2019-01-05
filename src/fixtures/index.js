@@ -11,3 +11,9 @@ export const product = {
   },
   error: null,
 }
+
+export const userInfo = {
+  login: 'user@lol.xyz',
+  password: '5f4dcc3b5aa765d61d8327deb882cf99',
+  withTerms: true,
+}

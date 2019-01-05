@@ -4,47 +4,73 @@ import {
   Button,
   Checkbox,
   Form,
-  Segment
+  Segment,
 } from 'semantic-ui-react'
+
 import Wrapper from 'Core/styled/Wrapper'
 
 type TForm = {
   login: {
     label: string,
     placeholder: string,
+    onChange: (value: {}) => void,
+    name: string,
   },
-  withTerms?: boolean,
+  withTerms?: {
+    label: string,
+    onChange: () => mixed,
+    checked: boolean,
+  },
   password: {
     label: string,
     placeholder: string,
+    onChange: (value: {}) => void,
+    name: string,
   },
+  onSubmit: () => boolean,
+  children: *,
+  success: boolean,
+  error: boolean,
+  loading: boolean,
 }
 
 const MainForm = ({
                     login,
                     withTerms,
                     password,
+                    onSubmit,
+                    children,
+                    success,
+                    error,
+                    loading,
                   }: TForm) => (
   <Wrapper>
     <Segment>
-      <Form>
+      <Form
+        onSubmit={onSubmit}
+        success={success}
+        error={error}
+        loading={loading}
+      >
         <Form.Field>
-          <Form.Input
-            label={login.label}
-            type='email'
-            placeholder={login.placeholder}/>
+          <Form.Input {...login}/>
         </Form.Field>
         <Form.Field>
-          <Form.Input
-            label={password.label}
-            type='password'
-            placeholder={password.placeholder}/>
+          <Form.Input {...password}/>
         </Form.Field>
         <Form.Field>
-          {withTerms && <Checkbox label='I agree to the Terms and Conditions'/>}
+          {
+            withTerms && <Checkbox {...withTerms}/>
+          }
         </Form.Field>
-        <Button color='blue' type='submit'>Submit</Button>
+        <Button
+          color='blue'
+          type='submit'
+        >Submit</Button>
       </Form>
+      {
+        (success || error) && children
+      }
     </Segment>
   </Wrapper>
 )
