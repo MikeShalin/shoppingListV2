@@ -2,8 +2,8 @@
 
 export const formFields = {
   login: {
-    label: 'Enter Login',
-    placeholder: 'Enter Login',
+    label: 'Enter email',
+    placeholder: 'Enter email',
   },
   password: {
     label: 'Enter Password',

@@ -13,6 +13,10 @@ exports[`App component matches early snapshots 1`] = `
       component={[Function]}
       path="/login/"
     />
+    <Route
+      component={[Function]}
+      path="/registration/"
+    />
     <Redirect
       from="*"
       push={false}

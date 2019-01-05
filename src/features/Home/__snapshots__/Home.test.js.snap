@@ -1,12 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App component matches early snapshots 1`] = `
-<Segment>
-  <inject-withHandlers(FormExampleForm)-with-productForm />
-  <inject-ListExampleDivided-with-productList />
-</Segment>
-`;
-
 exports[`Home component matches early snapshots 1`] = `
 <Segment>
   <inject-withHandlers(FormExampleForm)-with-productForm />

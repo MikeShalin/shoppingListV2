@@ -2,14 +2,14 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { shallowToJson } from 'enzyme-to-json'
 import { formFields } from './config'
-import Login from './index'
+import Registration from './index'
 
-describe('config login component', () => {
+describe('config Registration component', () => {
   it('formFields matches initial state', () => {
     expect(formFields).toEqual({
       login: {
-        label: 'Enter Login',
-        placeholder: 'Enter Login',
+        label: 'Enter email',
+        placeholder: 'Enter email',
       },
       password: {
         label: 'Enter Password',
@@ -19,9 +19,9 @@ describe('config login component', () => {
   })
 })
 
-describe('Login component', () => {
+describe('Registration component', () => {
   it('matches early snapshots', () => {
-    const tree = shallow(<Login />)
+    const tree = shallow(<Registration />)
     expect(shallowToJson(tree)).toMatchSnapshot()
   })
 })
