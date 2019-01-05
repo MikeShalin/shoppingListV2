@@ -7,7 +7,6 @@ import {
 } from 'semantic-ui-react'
 import {
   compose,
-  lifecycle,
   withHandlers,
   type HOC,
 } from 'recompose'

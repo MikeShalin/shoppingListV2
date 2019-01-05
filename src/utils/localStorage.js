@@ -10,3 +10,5 @@ export const setItem = ({ key, value }: ASetItem): boolean => {
   localStorage.setItem(key, value)
   return false
 }
+
+//TODO протестировать добавление в локалсторедж

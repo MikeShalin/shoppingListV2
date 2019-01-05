@@ -29,9 +29,6 @@ const ProductList = types
       self.list = value
       return true
     },
-    handleChange(target) {
-      self.productName = target
-    },
   }))
 
 export default ProductList

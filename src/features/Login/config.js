@@ -1,3 +1,5 @@
+/** @flow **/
+
 export const formFields = {
   login: {
     label: 'First Name',

@@ -39,5 +39,7 @@ module.exports = {
     "^Features(.*)$": "<rootDir>/src/features$1",
     "^Fixtures(.*)$": "<rootDir>/src/fixtures$1",
     "^Core(.*)$": "<rootDir>/src/core$1",
+    "^Utils(.*)$": "<rootDir>/src/utils$1",
+    "^Config(.*)$": "<rootDir>/src/config$1",
   }
 };

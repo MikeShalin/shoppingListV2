@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login component matches early snapshots 1`] = `
+<MainForm
+  login={
+    Object {
+      "label": "First Name",
+      "placeholder": "First Name",
+    }
+  }
+  password={
+    Object {
+      "label": "Enter Password",
+      "placeholder": "Enter Password",
+    }
+  }
+/>
+`;

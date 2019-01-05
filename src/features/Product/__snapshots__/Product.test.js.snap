@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductList component matches early snapshots 1`] = `
+<ListExampleDivided
+  date="Sat Jan 05 2019 10:41:54 GMT+0400 (Самарское стандартное время)"
+  getUpdatedTime={[Function]}
+  icon="product"
+  id={1}
+  name="product"
+  productList={
+    Object {
+      "error": null,
+      "list": Object {
+        "date": "Sat Jan 05 2019 10:41:54 GMT+0400 (Самарское стандартное время)",
+        "icon": "product",
+        "id": 1,
+        "name": "product",
+      },
+    }
+  }
+/>
+`;
